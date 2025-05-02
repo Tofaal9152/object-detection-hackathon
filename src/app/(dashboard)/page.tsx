@@ -5,7 +5,7 @@ import VideoSection from "@/components/dashboard/RightSide/VideoSection";
 const page = () => {
   return (
     <div className="container mx-auto p-4 dark:backdrop-blur-[3.5px] bg-white dark:bg-transparent rounded-xl border shadow-md z-10 h-screen">
-      <section>
+      <section className="flex items-center justify-center h-full">
         <div className=" mx-auto  flex max-w-7xl flex-col items-center justify-center">
           <BorderGlow />
           <div className="relative w-full px-4 pt-4 bg-black/70 rounded-3xl border-4 border-gray-800 shadow-2xl overflow-hidden">
