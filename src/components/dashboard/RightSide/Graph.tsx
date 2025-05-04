@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
+import { useEffect, useRef } from "react";
 
-export default function Graph() {
+export default function Graph({ deskData }: any) {
   const canvasEl: any = useRef(null);
-
   const colors = {
     blue: {
       default: "rgba(54, 162, 235, 1)",
@@ -23,16 +22,16 @@ export default function Graph() {
     gradient.addColorStop(0.65, colors.blue.quarter);
     gradient.addColorStop(1, colors.blue.zero);
 
-    const times = ["10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM"];
-    const twiddleData = [2, 3.5, 4, 3, 5, 3.8, 2.5];
+    const times1 = ["10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM"];
+    const twiddleData = ["IDLE", "WORKING", "EMPTY", "IDLE", "WORKING", "EMPTY", "IDLE"];
 
     const data = {
-      labels: times,
+      labels: deskData?.labels || times1, // X-axis (time)
       datasets: [
         {
           backgroundColor: gradient,
-          label: "Twiddle Working (units)",
-          data: twiddleData,
+          label: "Working (units)",
+          data: deskData?.status || twiddleData,
           fill: true,
           borderWidth: 2,
           borderColor: colors.blue.default,
@@ -43,35 +42,25 @@ export default function Graph() {
       ],
     };
 
-    const config: any = {
+    const config = {
       type: "line",
       data: data,
       options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            display: true,
-          },
-        },
         scales: {
-          y: {
-            beginAtZero: true,
-            title: {
-              display: true,
-              text: "Twiddle Working (units)",
-            },
-          },
           x: {
-            title: {
-              display: true,
-              text: "Time of Day",
-            },
+            type: "category",
+            title: { display: true, text: "Time" },
+          },
+          y: {
+            type: "category",
+            labels: ["WORKING", "IDLE","EMPTY"], 
+            title: { display: true, text: "Status" },
           },
         },
       },
     };
 
-    const myLineChart = new Chart(ctx, config);
+    const myLineChart = new Chart(ctx, config as any);
 
     return () => {
       myLineChart.destroy();
@@ -79,7 +68,7 @@ export default function Graph() {
   }, []);
 
   return (
-    <div className="w-full h-full shadow-md rounded-lg flex items-center justify-center">
+    <div className="w-full h-full shadow-md rounded-lg flex flex-col items-center justify-center">
       <canvas ref={canvasEl} height="100" />
     </div>
   );

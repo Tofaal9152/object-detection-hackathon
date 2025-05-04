@@ -1,13 +1,9 @@
-import axios from "axios";
+import api from "@/lib/api";
 
 const GetProfile = async () => {
   try {
-    const res = await axios.get(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/customer/profile/`,
-      { withCredentials: true }
-    );
-    
-
+    const res = await api.get("administrator/profile/");
+    // console.log(res);
     return res?.data;
   } catch {}
 };

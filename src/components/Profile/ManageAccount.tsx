@@ -60,7 +60,7 @@ const ManageAccount: React.FC<{ user: User }> = ({ user }) => {
             <Label htmlFor="name" className="text-sm">
               Full Name
             </Label>
-            <Input name="name" className="mt-1" defaultValue={user?.name} />
+            <Input name="name" className="mt-1" defaultValue={user?.name || "VisionDesk AI"} />
           </div>
           {state.errors?.name && (
             <p className="text-red-500 text-xs">{state.errors.name[0]}</p>
@@ -70,7 +70,7 @@ const ManageAccount: React.FC<{ user: User }> = ({ user }) => {
             <Label htmlFor="email" className="text-sm">
               Email
             </Label>
-            <Input disabled defaultValue={user?.email} className="mt-1" />
+            <Input disabled defaultValue={user?.email || "visionDeskaI@gmail.com"} className="mt-1" />
           </div>
 
           <div>
@@ -79,7 +79,7 @@ const ManageAccount: React.FC<{ user: User }> = ({ user }) => {
             </Label>
             <Input
               disabled
-              defaultValue={user?.phone_number}
+              defaultValue={user?.phone_number || "017XXXXXXXX"}
               className="mt-1"
             />
           </div>
@@ -90,7 +90,7 @@ const ManageAccount: React.FC<{ user: User }> = ({ user }) => {
                 Cancel
               </div>
             </DialogClose>
-            <Button disabled={isPending}>
+            <Button disabled={true}>
               {isPending ? (
                 <span className="flex items-center gap-2">
                   <Loader className="animate-spin" /> Updating...

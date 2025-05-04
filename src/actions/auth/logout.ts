@@ -1,20 +1,16 @@
-// import { redirect } from "next/navigation";
-import axios from "axios";
+import api from "@/lib/api";
 import { toast } from "sonner";
 
 export const LogOutAction = async () => {
   try {
-    await axios.post(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/rest-auth/logout/`,
-      {},
-      {
-        withCredentials: true,
-      }
-    );
-
+    await api.post("rest-auth/logout/");
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+    localStorage.removeItem("workplace_setup");
     toast.success("You have been logged out");
-    return {};
+    return { success: true };
   } catch {
     toast.error("An error occurred");
+    return { success: false, error: "An error occurred" };
   }
 };

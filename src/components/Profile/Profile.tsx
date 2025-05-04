@@ -9,8 +9,7 @@ import {
   selectGetProfile,
   selectIsLogin,
   selectProfilRefresh,
-  setGetProfile,
-  setIsLogin,
+  setGetProfile
 } from "@/redux/allStateSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { useEffect } from "react";
@@ -27,16 +26,12 @@ const Profile = () => {
       .then((e) => {
         if (e) {
           dispatch(setGetProfile(e));
-          dispatch(setIsLogin(true));
         } else {
           dispatch(setGetProfile(null));
-          dispatch(setIsLogin(false));
         }
       })
       .catch(() => {
         dispatch(setGetProfile(null));
-
-        dispatch(setIsLogin(false));
       });
   }, [dispatch, refresh, isLogin]);
 

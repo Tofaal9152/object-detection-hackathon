@@ -1,39 +1,108 @@
 "use client";
-import { selectIsLogin } from "@/redux/allStateSlice";
-import { useAppSelector } from "@/redux/hooks";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-export const IsAuthenticatedInDashboard = ({
+// export const IsAuthenticatedInDashboard = ({
+//   children,
+// }: {
+//   children: React.ReactNode;
+// }) => {
+//   const router = useRouter();
+//   const isLogin =
+//     typeof window !== "undefined" &&
+//     !!localStorage.getItem("access_token") &&
+//     !!localStorage.getItem("refresh_token");
+//   useEffect(() => {
+//     if (!isLogin) {
+//       router.replace("/auth/login");
+//     } else {
+//       router.replace("/dashboard");
+//     }
+//   }, [router, isLogin]);
+
+//   if (!isLogin) return null;
+
+//   return <>{children}</>;
+// };
+// export const IsAuthenticatedInDashboard = ({
+//   children,
+// }: {
+//   children: React.ReactNode;
+// }) => {
+//   const router = useRouter();
+//   const isLogin =
+//     typeof window !== "undefined" &&
+//     !!localStorage.getItem("access_token") &&
+//     !!localStorage.getItem("refresh_token");
+//   useEffect(() => {
+//     if (!isLogin) {
+//       router.replace("/auth/login");
+//     } else if (isLogin && localStorage.getItem("workplace_setup") === "false") {
+//       router.replace("/onboarding");
+//     }
+//   }, [router, isLogin]);
+
+//   if (!isLogin) return null;
+
+//   return <>{children}</>;
+// };
+
+export const IsAuthenticated = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
-  const isLogin = useAppSelector(selectIsLogin);
   const router = useRouter();
+  const isLogin =
+    typeof window !== "undefined" &&
+    !!localStorage.getItem("access_token") &&
+    !!localStorage.getItem("refresh_token");
   useEffect(() => {
     if (!isLogin) {
-      router.replace("/auth/login");
-    }
-  }, [isLogin, router]);
-
-  if (!isLogin) return null;
-
-  return <>{children}</>
-};
-
-const IsAuthenticatedInAuth = ({ children }: { children: React.ReactNode }) => {
-  const isLogin = useAppSelector(selectIsLogin);
-  const router = useRouter();
-  useEffect(() => {
-    if (isLogin) {
       router.replace("/");
     }
-  }, [isLogin, router]);
-
-  if (isLogin) return null;
+  }, [router, isLogin]);
 
   return <>{children}</>;
 };
 
-export default IsAuthenticatedInAuth;
+export const IsAuthenticatedInAuth = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const router = useRouter();
+  const isLogin =
+    typeof window !== "undefined" &&
+    !!localStorage.getItem("access_token") &&
+    !!localStorage.getItem("refresh_token");
+  useEffect(() => {
+    if (isLogin) {
+      router.replace("/");
+    }
+  }, [router, isLogin]);
+
+  return <>{children}</>;
+};
+// export const IsAuthenticatedInAuth = ({
+//   children,
+// }: {
+//   children: React.ReactNode;
+// }) => {
+//   const router = useRouter();
+//   const isLogin =
+//     typeof window !== "undefined" &&
+//     !!localStorage.getItem("access_token") &&
+//     !!localStorage.getItem("refresh_token");
+//   useEffect(() => {
+//     if (isLogin && localStorage.getItem("workplace_setup") === "true") {
+//       router.replace("/");
+//     } else if (isLogin && localStorage.getItem("workplace_setup") === "false") {
+//       router.replace("/onboarding");
+//     }
+//   }, [router, isLogin]);
+
+//   if (!isLogin) return null;
+
+//   return <>{children}</>;
+// };

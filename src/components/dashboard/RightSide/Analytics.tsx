@@ -24,6 +24,7 @@ const Analytics = () => {
             >
               ✕
             </button>
+            {/* All Chart Slides */}
             <AllChartSlides />
           </div>
         </div>

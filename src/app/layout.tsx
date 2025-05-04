@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { ReduxProvider } from "@/redux/ReduxProvider";
 import NextTopLoader from "nextjs-toploader";
 import { ParticleBackground } from "@/components/ui/particle-background";
+import ChatBot from "@/components/ChatBot";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -42,6 +43,7 @@ export default function RootLayout({
             <ParticleBackground />
 
             {children}
+            <ChatBot />
           </ThemeProvider>
           <Toaster />
         </ReduxProvider>

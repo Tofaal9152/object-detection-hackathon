@@ -1,6 +1,6 @@
 import Analytics from "@/components/dashboard/RightSide/Analytics";
-import BorderGlow from "@/components/ui/BorderGlow";
 import VideoSection from "@/components/dashboard/RightSide/VideoSection";
+import BorderGlow from "@/components/ui/BorderGlow";
 
 const page = () => {
   return (
@@ -10,13 +10,14 @@ const page = () => {
           <BorderGlow />
           <div className="relative w-full px-4 pt-4 bg-black/70 rounded-3xl border-4 border-gray-800 shadow-2xl overflow-hidden">
             {/* Recording dot */}
-            <div className="absolute top-3 left-4 z-10 flex items-center space-x-2 p-2 bg-black rounded-r-md">
+            <div className="absolute top-3 right-4 z-10 flex items-center space-x-2 p-2 bg-black rounded-l-md">
               <div className="h-3 w-3 rounded-full bg-red-500 animate-pulse" />
               <span className="text-sm text-white font-semibold">REC</span>
             </div>
 
             {/* Video And TimeLine */}
             <VideoSection />
+            {/* <TimeLine /> */}
 
             {/* Camera Bezel effect */}
             <div className="absolute inset-0 border-[8px] border-black/40 rounded-3xl pointer-events-none" />

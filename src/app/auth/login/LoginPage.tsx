@@ -2,49 +2,47 @@
 import { LoginAction } from "@/actions/auth/login";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { setIsLogin } from "@/redux/allStateSlice";
-import { useAppDispatch } from "@/redux/hooks";
-import axios from "axios";
 import { motion } from "framer-motion";
 import { Loader, Lock, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useActionState, useEffect } from "react";
-import { toast } from "sonner";
 
 const LoginPage = () => {
   const router = useRouter();
-  const dispatch = useAppDispatch();
 
   const [state, action, isPending] = useActionState(LoginAction, {
     errors: {},
   });
-
-  // if login is successful, redirect to dashboard
+  console.log(state.success);
+  const isLogin =
+    typeof window !== "undefined" &&
+    !!localStorage.getItem("access_token") &&
+    !!localStorage.getItem("refresh_token");
   useEffect(() => {
-    if (state.success) {
-      dispatch(setIsLogin(true));
+    if (state.success && !isPending) {
+      router.push("/");
     }
-  }, [state.success, dispatch]);
-  // if user is already logged in, redirect to dashboard
-  const handleResendOtp = async (e: any) => {
-    e.preventDefault();
-    try {
-      await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/customer/resend-otp/`,
-        {},
-        {
-          withCredentials: true,
-        }
-      );
-
-      toast.success("Otp sent successfully");
-      router.push("/auth/verify-otp");
-    } catch {
-      toast.error("Error in resending otp");
-    }
-  };
+  }, [state.success, router, isLogin, isPending]);
+  // const isLogin =
+  //   typeof window !== "undefined" &&
+  //   !!localStorage.getItem("access_token") &&
+  //   !!localStorage.getItem("refresh_token");
+  // useEffect(() => {
+  //   if (!isPending) {
+  //     if (state.success) {
+  //       if (isLogin && localStorage.getItem("workplace_setup") === "false") {
+  //         router.push("/onboarding");
+  //       } else if (
+  //         isLogin &&
+  //         localStorage.getItem("workplace_setup") === "true"
+  //       ) {
+  //         router.push("/");
+  //       }
+  //     }
+  //   }
+  // }, [state.success, router, isLogin, isPending]);
 
   return (
     <motion.div
@@ -129,17 +127,6 @@ const LoginPage = () => {
           {state.errors.formError && (
             <div className="bg-red-100 text-red-500 p-2 text-sm rounded-lg mt-4">
               {state.errors.formError}
-            </div>
-          )}
-          {state.errors.verified && (
-            <div className="bg-red-100 text-red-500 p-2 text-sm  rounded-lg mt-4">
-              Please verify your phone number.
-              <span
-                onClick={handleResendOtp}
-                className="underline cursor-pointer"
-              >
-                Send OTP
-              </span>
             </div>
           )}
         </form>

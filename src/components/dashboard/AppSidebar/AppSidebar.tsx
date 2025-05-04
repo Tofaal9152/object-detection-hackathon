@@ -1,6 +1,6 @@
 "use client";
 
-import { Banknote, BookOpen } from "lucide-react";
+import { Banknote, Video } from "lucide-react";
 import * as React from "react";
 
 import { AppSidebarContent } from "@/components/dashboard/AppSidebar/AppSidebarContent";
@@ -45,17 +45,17 @@ const data = {
   navMain: [
     {
       title: "Video ",
-      url: "#",
-      icon: BookOpen,
+      url: "/",
+      icon: Video,
       isActive: true,
       items: [
         {
           title: "Live Video",
-          url: "/",
+          url: "/dashboard",
         },
         {
-          title: "Examples",
-          url: "/",
+          title: "All-Desk",
+          url: "/dashboard/all-desk",
         },
       ],
     },

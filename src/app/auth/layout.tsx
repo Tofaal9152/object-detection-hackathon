@@ -1,5 +1,7 @@
 "use client";
-import IsAuthenticatedInAuth from "@/hooks/isAuthenticated";
+
+import { IsAuthenticatedInAuth } from "@/hooks/isAuthenticated";
+
 export default function DashboardLayout({
   children,
 }: {
@@ -7,3 +9,12 @@ export default function DashboardLayout({
 }) {
   return <IsAuthenticatedInAuth>{children}</IsAuthenticatedInAuth>;
 }
+// "use client";
+// import IsAuthenticatedInAuth from "@/hooks/isAuthenticated";
+// export default function DashboardLayout({
+//   children,
+// }: {
+//   children: React.ReactNode;
+// }) {
+//   return <IsAuthenticatedInAuth>{children}</IsAuthenticatedInAuth>;
+// }

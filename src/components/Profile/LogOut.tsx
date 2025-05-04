@@ -1,33 +1,32 @@
 "use client";
-import { LogOutAction } from "@/actions/auth/logout";
-import { setIsLogin } from "@/redux/allStateSlice";
-import { useAppDispatch } from "@/redux/hooks";
 import { Loader, LogOut } from "lucide-react";
-import { useActionState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const SignOut = () => {
-  const dispatch = useAppDispatch();
-
-  const [, action, isPending] = useActionState(LogOutAction, {
-    errors: {},
-  });
-  useEffect(() => {
-    if (isPending) {
-      dispatch(setIsLogin(false));
+  const [loading, setloading] = useState(false);
+  const router = useRouter();
+  const handleSignout = () => {
+    try {
+      setloading(true);
+      localStorage.removeItem("access_token");
+      localStorage.removeItem("refresh_token");
+      router.push("/auth/login");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setloading(false);
     }
-  }, [isPending, dispatch]);
+  };
   return (
-    <form
-      action={action}
-      className="text-red-400 p-2 rounded-md hover:bg-accent font-semibold text-xs  flex items-center gap-2 cursor-pointer"
-    >
+    <div className="text-red-400 p-2 rounded-md hover:bg-accent font-semibold text-xs  flex items-center gap-2 cursor-pointer">
       <button
+        onClick={handleSignout}
         type="submit"
-        disabled={isPending}
-        className="text-red-400 w-full flex items-center gap-2 cursor-pointer"
+        className="text-red-400  w-full flex items-center gap-2 cursor-pointer"
       >
         <LogOut className="w-4 h-4 " />
-        {isPending ? (
+        {loading ? (
           <>
             <Loader className="w-4 h-4 animate-spin" />
             Signing Out...
@@ -36,7 +35,7 @@ const SignOut = () => {
           "Sign Out"
         )}
       </button>
-    </form>
+    </div>
   );
 };
 

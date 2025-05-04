@@ -1,8 +1,8 @@
-import { IsAuthenticatedInDashboard } from "@/hooks/isAuthenticated";
 import { AppSidebar } from "@/components/dashboard/AppSidebar/AppSidebar";
 import SidebarNavbar from "@/components/dashboard/AppSidebar/SidebarNavbar";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { ParticleBackground } from "@/components/ui/particle-background";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import {IsAuthenticated} from "@/hooks/isAuthenticated";
 
 export default function DashboardLayout({
   children,
@@ -10,7 +10,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <IsAuthenticatedInDashboard>
+    <IsAuthenticated>
       <SidebarProvider>
         <AppSidebar />
         <SidebarInset>
@@ -19,7 +19,7 @@ export default function DashboardLayout({
           <ParticleBackground />
         </SidebarInset>
       </SidebarProvider>
-    </IsAuthenticatedInDashboard>
+    </IsAuthenticated>
   );
 }
 
