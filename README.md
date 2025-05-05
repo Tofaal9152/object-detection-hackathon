@@ -1,8 +1,8 @@
-# 🚀 Project Setup Instructions
+# Project Setup Instructions
 
-## 1. Set up environment file
+## 1. Set up the environment file
 
-Make sure you have a `.env` file with this line:
+Ensure you have a `.env` file with the following line:
 
 ```
 NEXT_PUBLIC_BACKEND_URL=your_backend_url_here
@@ -12,7 +12,7 @@ NEXT_PUBLIC_BACKEND_URL=your_backend_url_here
 
 ## 2. Install dependencies
 
-Run this in your terminal:
+Run the following command in your terminal:
 
 ```bash
 npm install
@@ -26,18 +26,7 @@ npm i --legacy-peer-deps
 
 ---
 
-## 3. Start the development server
-
-```bash
-npm run dev
-```
-
-Then open your browser and go to:  
-[http://localhost:3000](http://localhost:3000)
-
----
-
-## 🔧 Run Build and Start (Production Mode)
+## 3. Build and start the project (Production Mode) [Recommended]
 
 ### Step 1: Build the project
 
@@ -50,28 +39,42 @@ npm run build
 ```bash
 npm start
 ```
-<!-- End -->
-## 4.if --> Run on a different port (Development Mode)
 
-Use this command:
+By default, the application runs at [http://localhost:3000](http://localhost:3000).
+
+### 👉 Run on a different port (Production Mode)
+
+Set the `PORT` environment variable before starting:
+
+```bash
+npm run start -- -p 4000
+```
+
+Replace `4000` with your desired port.
+
+---
+
+## 4. Run in development mode
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Then open your browser and navigate to:  
+[http://localhost:3000](http://localhost:3000)
+
+### 👉 Run on a different port (Development Mode)
+
+Use the following command:
 
 ```bash
 npm run dev -- -p 4000
 ```
 
-Replace `4000` with any port number you prefer.
+Replace `4000` with your preferred port number.
 
 ---
 
-### Step 3: Start on a different port (if default doesn't work)
-
-Set the `PORT` environment variable before starting:
-
-```bash
-PORT=4000 npm start
-```
-
-(Replace `4000` with your desired port)
-
----
-
+✅ Your project should now be running successfully!
