@@ -13,7 +13,7 @@ export function AppSidebarHeader() {
         <Link href="/">
           <SidebarMenuButton
             size="lg"
-            className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+            className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground cursor-pointer"
           >
             <div className="size-4 flex items-center justify-center p-2 box-content rounded-full bg-gradient-to-r from-cyan-400 to-violet-500">
               <Camera color="white" />

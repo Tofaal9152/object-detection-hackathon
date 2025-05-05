@@ -175,14 +175,6 @@ const VideoSection = () => {
                 </div>
               </div>
             </motion.div>
-
-            {/* Recording indicator */}
-            <div className="absolute top-3 right-4 z-40 flex items-center space-x-2 p-2 bg-black/80 backdrop-blur-sm rounded-lg border border-red-900/50 shadow-[0_0_10px_rgba(239,68,68,0.3)]">
-              <div className="h-3 w-3 rounded-full bg-red-500 animate-pulse" />
-              <span className="text-xs text-white font-mono tracking-wider">
-                REC
-              </span>
-            </div>
           </div>
           {/* Timeline */}
           <TimeLine />

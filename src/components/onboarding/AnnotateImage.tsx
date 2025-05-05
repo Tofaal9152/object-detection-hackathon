@@ -133,7 +133,7 @@ const AnnotateImage = () => {
           <h1 className="text-4xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 pb-2">
             Onboarding Process
           </h1>
-          <p className="text-center text-neutral-400 text-sm mb-8">
+          <p className="text-center text-neutral-400 text-sm ">
             Step-2 : Setup Workplace
           </p>
         </motion.div>

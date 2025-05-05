@@ -25,24 +25,6 @@ const LoginPage = () => {
       router.push("/");
     }
   }, [state.success, router, isLogin, isPending]);
-  // const isLogin =
-  //   typeof window !== "undefined" &&
-  //   !!localStorage.getItem("access_token") &&
-  //   !!localStorage.getItem("refresh_token");
-  // useEffect(() => {
-  //   if (!isPending) {
-  //     if (state.success) {
-  //       if (isLogin && localStorage.getItem("workplace_setup") === "false") {
-  //         router.push("/onboarding");
-  //       } else if (
-  //         isLogin &&
-  //         localStorage.getItem("workplace_setup") === "true"
-  //       ) {
-  //         router.push("/");
-  //       }
-  //     }
-  //   }
-  // }, [state.success, router, isLogin, isPending]);
 
   return (
     <motion.div
