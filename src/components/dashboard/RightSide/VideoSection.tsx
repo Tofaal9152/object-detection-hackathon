@@ -65,7 +65,7 @@ const VideoSection = () => {
               <img
                 src={`${process.env.NEXT_PUBLIC_BACKEND_URL}stream/realtime-data/?action=stream`}
                 alt="Video Stream"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-b-[2.9rem]"
               />
             </motion.div>
 

@@ -43,7 +43,7 @@ const TimeLine = () => {
   const localTime = parseInt(
     new Date().toLocaleTimeString("en-US", {
       hour: "2-digit",
-      hour12: true,
+      hour12: false,
     })
   );
 
@@ -132,7 +132,6 @@ const TimeLine = () => {
 
 export default TimeLine;
 
-
 // "use client"
 
 // import { useEffect, useState } from "react"
@@ -205,7 +204,7 @@ export default TimeLine;
 //           <Clock className="h-4 w-4 text-cyan-400" />
 //           <h3 className="text-sm font-medium text-white">TEMPORAL ANALYSIS</h3>
 //         </div>
-        
+
 //         <div className="flex items-center space-x-4 text-xs text-neutral-400">
 //           <div className="flex items-center space-x-1">
 //             <div className="h-2 w-2 rounded-full bg-green-500"></div>
@@ -241,17 +240,17 @@ export default TimeLine;
 //               <div className="border-b border-dashed border-neutral-800/50 h-1/3"></div>
 //               <div className="border-b border-dashed border-neutral-800/50 h-1/3"></div>
 //             </div>
-            
+
 //             {/* Time markers */}
 //             <div className="absolute inset-0 flex justify-between">
 //               {timeline?.map((item, index) => {
 //                 const hourNum = parseInt(item.time.split(":")[0])
 //                 const hour = hourNum === 0 ? 12 : hourNum > 12 ? hourNum - 12 : hourNum
 //                 const suffix = hourNum < 12 ? "AM" : "PM"
-                
+
 //                 // Calculate status for visual indicator
 //                 const status = hourNum < localTime ? "past" : hourNum === localTime ? "current" : "future"
-                
+
 //                 return (
 //                   <div
 //                     key={item.time}
@@ -265,7 +264,7 @@ export default TimeLine;
 //                         animate={{ height: `${(item.working / maxWorking) * 60}px` }}
 //                         transition={{ duration: 0.5, delay: 0.1 * index }}
 //                         className="w-1 bg-gradient-to-t from-green-600 to-green-400 rounded-t-sm"
-//                         style={{ 
+//                         style={{
 //                           minHeight: item.working > 0 ? '2px' : '0',
 //                           opacity: status === "future" ? 0.5 : 1
 //                         }}
@@ -275,7 +274,7 @@ export default TimeLine;
 //                         animate={{ height: `${(item.idle / maxIdle) * 60}px` }}
 //                         transition={{ duration: 0.5, delay: 0.1 * index + 0.05 }}
 //                         className="w-1 bg-gradient-to-t from-yellow-600 to-yellow-400 rounded-t-sm"
-//                         style={{ 
+//                         style={{
 //                           minHeight: item.idle > 0 ? '2px' : '0',
 //                           opacity: status === "future" ? 0.5 : 1
 //                         }}
@@ -285,13 +284,13 @@ export default TimeLine;
 //                         animate={{ height: `${(item.empty / maxEmpty) * 60}px` }}
 //                         transition={{ duration: 0.5, delay: 0.1 * index + 0.1 }}
 //                         className="w-1 bg-gradient-to-t from-red-600 to-red-400 rounded-t-sm"
-//                         style={{ 
+//                         style={{
 //                           minHeight: item.empty > 0 ? '2px' : '0',
 //                           opacity: status === "future" ? 0.5 : 1
 //                         }}
 //                       />
 //                     </div>
-                    
+
 //                     {/* Time marker with tooltip */}
 //                     <TooltipProvider>
 //                       <Tooltip>
@@ -301,10 +300,10 @@ export default TimeLine;
 //                             animate={{ scale: 1, opacity: 1 }}
 //                             transition={{ duration: 0.3, delay: 0.1 * index }}
 //                             className={`h-3 w-3 rounded-full mb-1 ${
-//                               status === "past" 
-//                                 ? "bg-red-500" 
-//                                 : status === "current" 
-//                                   ? "bg-green-500 animate-pulse" 
+//                               status === "past"
+//                                 ? "bg-red-500"
+//                                 : status === "current"
+//                                   ? "bg-green-500 animate-pulse"
 //                                   : "bg-yellow-500"
 //                             }`}
 //                           />
@@ -312,7 +311,7 @@ export default TimeLine;
 //                             {hour} {suffix}
 //                           </div>
 //                         </TooltipTrigger>
-//                         <TooltipContent 
+//                         <TooltipContent
 //                           side="top"
 //                           className="bg-neutral-900 border border-neutral-700 shadow-[0_0_10px_rgba(0,149,255,0.2)]"
 //                         >

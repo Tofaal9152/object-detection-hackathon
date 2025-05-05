@@ -22,7 +22,7 @@ const LoginPage = () => {
     !!localStorage.getItem("refresh_token");
   useEffect(() => {
     if (state.success && !isPending) {
-      router.push("/onboarding");
+      router.push("/");
     }
   }, [state.success, router, isLogin, isPending]);
   // const isLogin =
