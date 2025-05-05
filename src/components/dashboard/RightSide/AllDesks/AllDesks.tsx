@@ -68,15 +68,15 @@ const AllDesks = () => {
                     🧭 Coordinates: ({desk.x1_coordinate}, {desk.y1_coordinate})
                     to ({desk.x2_coordinate}, {desk.y2_coordinate})
                   </p>
-                  <p className="relative z-50 mb-4 text-base font-normal text-slate-500">
-                    🕒 Created: {new Date(desk.created_at).toLocaleString()}
-                  </p>
-                  <p className="relative z-50 mb-4 text-base font-normal text-slate-500">
+                  {/* <p className="relative z-50 mb-4 text-base font-normal text-slate-500">
                     🧭 Coordinates: ({desk.x1_coordinate}, {desk.y1_coordinate})
                     to ({desk.x2_coordinate}, {desk.y2_coordinate})
-                  </p>
+                  </p> */}
                   <p className="relative z-50 mb-4 text-base font-normal text-slate-500">
                     🏢 Workplace ID: {desk.workplace}
+                  </p>
+                  <p className="relative z-50 mb-4 text-base font-normal text-slate-500">
+                    🕒 Created: {new Date(desk.created_at).toLocaleString()}
                   </p>
 
                   {/* Meaty part - Meteor effect */}

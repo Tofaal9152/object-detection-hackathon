@@ -1,7 +1,10 @@
+import { UploadImageAction } from "@/actions/upload-image/upload-image";
 import { cn } from "@/lib/utils";
-import React, { useRef, useState } from "react";
-import { motion } from "motion/react";
 import { IconUpload } from "@tabler/icons-react";
+import { ArrowRightIcon, Loader2 } from "lucide-react";
+import { motion } from "motion/react";
+import { useRouter } from "next/navigation";
+import { useActionState, useEffect, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
 
 const mainVariant = {
@@ -30,6 +33,7 @@ export const FileUpload = ({
 }: {
   onChange?: (files: File[]) => void;
 }) => {
+  const [loading, setLoading] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -53,8 +57,18 @@ export const FileUpload = ({
     },
   });
 
+  const [state, action, isPending] = useActionState(UploadImageAction, {
+    errors: {},
+    success: false,
+  });
+  const router = useRouter();
+  useEffect(() => {
+    if (state.success) {
+      router.push("/onboarding/annotate-image");
+    }
+  }, [state.success, router]);
   return (
-    <div className="w-full" {...getRootProps()}>
+    <form action={action} className="w-full" {...getRootProps()}>
       <motion.div
         onClick={handleClick}
         whileHover="animate"
@@ -64,6 +78,8 @@ export const FileUpload = ({
           ref={fileInputRef}
           id="file-upload-handle"
           type="file"
+          name="workplace_image"
+          accept="image/*"
           onChange={(e) => handleFileChange(Array.from(e.target.files || []))}
           className="hidden"
         />
@@ -166,7 +182,17 @@ export const FileUpload = ({
           </div>
         </div>
       </motion.div>
-    </div>
+      <div className="flex flex-col items-center justify-center w-full mt-4">
+        <button
+          disabled={isPending}
+          type="submit"
+          className="inline-flex mt-12 h-12 cursor-pointer animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+        >
+          {isPending && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
+          Upload Image
+        </button>
+      </div>
+    </form>
   );
 };
 

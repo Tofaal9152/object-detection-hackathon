@@ -1,6 +1,6 @@
 "use client";
 
-import { Banknote, Video } from "lucide-react";
+import { Banknote, DatabaseZapIcon, Video } from "lucide-react";
 import * as React from "react";
 
 import { AppSidebarContent } from "@/components/dashboard/AppSidebar/AppSidebarContent";
@@ -72,6 +72,22 @@ const data = {
         {
           title: "Annotate Image",
           url: "/onboarding/annotate-image",
+        },
+      ],
+    },
+    {
+      title: "Report",
+      url: "#",
+      icon:DatabaseZapIcon ,
+      isActive: true,
+      items: [
+        {
+          title: "Overall Reports",
+          url: "/dashboard/report",
+        },
+        {
+          title: "Heatmap",
+          url: "/dashboard/report/heatmap",
         },
       ],
     },

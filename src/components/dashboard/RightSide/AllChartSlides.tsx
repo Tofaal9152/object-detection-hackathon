@@ -22,6 +22,7 @@ export const AllChartSlides = () => {
         );
 
         setDeskData(res?.data);
+        console.log(res)
       } catch (error) {
         console.error("Error fetching video stream:", error);
       } finally {

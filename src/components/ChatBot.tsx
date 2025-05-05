@@ -165,7 +165,7 @@ export default function ChatBot() {
           </div>
         </div>
       ) : (
-        <button onClick={() => setIsOpen(true)} className=" cursor-pointer shadow-lg animate-bounce">
+        <button onClick={() => setIsOpen(true)} className=" cursor-pointer shadow-lg animate-pulse">
           <img
             src="/chat-bot-icon-design-robot-600nw-2476207303.jpg"
             alt="ChatBot"

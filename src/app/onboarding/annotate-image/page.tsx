@@ -8,7 +8,7 @@ const page = () => {
           Onboarding Process
         </h1>
         <p className="mt-2 text-gray-600 dark:text-gray-400 ">
-          Step-2 : Annotate Image
+          Step-2 : Setup Workplace
         </p>
       </div>
       <AnnotateImage />
