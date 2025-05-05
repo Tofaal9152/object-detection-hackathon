@@ -3,10 +3,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
-import { ReduxProvider } from "@/redux/ReduxProvider";
 import NextTopLoader from "nextjs-toploader";
 import { ParticleBackground } from "@/components/ui/particle-background";
 import ChatBot from "@/components/ChatBot";
+import { ReduxProvider } from "@/redux/ReduxProvider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -28,24 +28,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ReduxProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <NextTopLoader showSpinner={false} />
-            <ParticleBackground />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextTopLoader showSpinner={false} />
+          <ParticleBackground />
 
-            {children}
-            <ChatBot />
-          </ThemeProvider>
-          <Toaster />
+          {children}
+          <ChatBot />
+        </ThemeProvider>
+        <Toaster />
         </ReduxProvider>
       </body>
     </html>

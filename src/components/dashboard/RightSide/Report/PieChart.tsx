@@ -64,7 +64,7 @@ const PieChart = ({ data }: { data: ChartData }) => {
         titleFont: {
           family: "'Inter', sans-serif",
           size: 14,
-          weight: "bold",
+          weight: 700,
         },
         bodyFont: {
           family: "'Inter', sans-serif",

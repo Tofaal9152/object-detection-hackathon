@@ -67,7 +67,7 @@ const Barchart = ({ data }: { data: BarchartProps }) => {
         titleFont: {
           family: "'Inter', sans-serif",
           size: 14,
-          weight: "bold",
+          weight: 700,
         },
         bodyFont: {
           family: "'Inter', sans-serif",

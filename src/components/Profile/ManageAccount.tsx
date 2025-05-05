@@ -1,5 +1,3 @@
-"use client";
-import { ProfileAction } from "@/actions/profile/UpdateProfile";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -12,10 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { setProfilRefresh } from "@/redux/allStateSlice";
-import { useAppDispatch } from "@/redux/hooks";
-import { Loader, Settings } from "lucide-react";
-import { useActionState, useEffect } from "react";
+import { Settings } from "lucide-react";
 import Aavtar from "./Aavtar";
 type User = {
   name: string;
@@ -23,15 +18,6 @@ type User = {
   phone_number: string;
 };
 const ManageAccount: React.FC<{ user: User }> = ({ user }) => {
-  const dispatch = useAppDispatch();
-  const [state, action, isPending] = useActionState(ProfileAction, {
-    errors: {},
-  });
-  useEffect(() => {
-    if (!isPending) {
-      dispatch(setProfilRefresh());
-    }
-  }, [isPending, dispatch]);
   return (
     <Dialog>
       <DialogTrigger className="flex p-2  mt-2 rounded-md hover:bg-accent items-center gap-3  cursor-pointer transition dark:text-slate-300">
@@ -55,22 +41,33 @@ const ManageAccount: React.FC<{ user: User }> = ({ user }) => {
         </div>
 
         {/* Form Fields */}
-        <form action={action} className="space-y-4 mt-4">
+        <form
+          // action={action}
+          className="space-y-4 mt-4"
+        >
           <div>
             <Label htmlFor="name" className="text-sm">
               Full Name
             </Label>
-            <Input name="name" className="mt-1" defaultValue={user?.name || "VisionDesk AI"} />
+            <Input
+              name="name"
+              className="mt-1"
+              defaultValue={user?.name || "VisionDesk AI"}
+            />
           </div>
-          {state.errors?.name && (
+          {/* {state.errors?.name && (
             <p className="text-red-500 text-xs">{state.errors.name[0]}</p>
-          )}
+          )} */}
 
           <div>
             <Label htmlFor="email" className="text-sm">
               Email
             </Label>
-            <Input disabled defaultValue={user?.email || "visionDeskaI@gmail.com"} className="mt-1" />
+            <Input
+              disabled
+              defaultValue={user?.email || "visionDeskaI@gmail.com"}
+              className="mt-1"
+            />
           </div>
 
           <div>
@@ -90,15 +87,7 @@ const ManageAccount: React.FC<{ user: User }> = ({ user }) => {
                 Cancel
               </div>
             </DialogClose>
-            <Button disabled={true}>
-              {isPending ? (
-                <span className="flex items-center gap-2">
-                  <Loader className="animate-spin" /> Updating...
-                </span>
-              ) : (
-                "Update Account"
-              )}
-            </Button>
+            <Button disabled={true}>Update Account</Button>
           </div>
         </form>
       </DialogContent>

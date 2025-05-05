@@ -1,4 +1,3 @@
-import HandleError from "@/lib/errorHandle";
 import { validateForm } from "@/lib/validateForm";
 import { RegisterSchema } from "@/Schemas/auth";
 import { RegisterType } from "@/types/auth";
@@ -30,7 +29,25 @@ export const RegisterAction = async (
       }
     );
   } catch (error) {
-    HandleError(error);
+    if (axios.isAxiosError(error)) {
+      return {
+        errors: {
+          formError: error.response?.data.message || ["Axios error occurred"],
+        },
+      };
+    } else if (error instanceof Error) {
+      return {
+        errors: {
+          formError: [error.message],
+        },
+      };
+    } else {
+      return {
+        errors: {
+          formError: ["Unknown error"],
+        },
+      };
+    }
   }
 
   redirect("/auth/login");
