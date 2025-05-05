@@ -60,6 +60,22 @@ const data = {
       ],
     },
     {
+      title: "Report",
+      url: "#",
+      icon:DatabaseZapIcon ,
+      isActive: true,
+      items: [
+        {
+          title: "Overall Reports",
+          url: "/dashboard/report",
+        },
+        {
+          title: "Heat Map",
+          url: "/dashboard/report/heatmap",
+        },
+      ],
+    },
+    {
       title: "Onboarding",
       url: "#",
       icon: Banknote,
@@ -72,22 +88,6 @@ const data = {
         {
           title: "Annotate Image",
           url: "/onboarding/annotate-image",
-        },
-      ],
-    },
-    {
-      title: "Report",
-      url: "#",
-      icon:DatabaseZapIcon ,
-      isActive: true,
-      items: [
-        {
-          title: "Overall Reports",
-          url: "/dashboard/report",
-        },
-        {
-          title: "Heatmap",
-          url: "/dashboard/report/heatmap",
         },
       ],
     },

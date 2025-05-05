@@ -6,7 +6,7 @@ type AavtarProps = {
 const Aavtar: React.FC<AavtarProps> = ({ className }) => {
   return (
     <Avatar className={`${className}  hover:animate-pulse`}>
-      <AvatarImage src="/avatar.png" />
+      <AvatarImage src="/avatar.jpg"/>
       <AvatarFallback>P</AvatarFallback>
     </Avatar>
   );

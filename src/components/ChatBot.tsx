@@ -1,9 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import Image from "next/image";
 
 const intents = [
   {
@@ -12,14 +13,14 @@ const intents = [
     reply: "You seem to be looking for live streaming! Let me take you there.",
   },
   {
-    keywords: ["desk", "all desks", "desk list", "view desks"],
-    path: "/dashboard/all-desk",
-    reply: "You're looking for desks! Here's the list for you.",
+    keywords: ["Heatmap", "heat map", "map", "heat"],
+    path: "/dashboard/report/heatmap",
+    reply: "Opening the desk list for you.",
   },
   {
-    keywords: ["login", "sign in", "log in", "sign in account"],
-    path: "/auth/login",
-    reply: "Let's get you logged in!",
+    keywords: ["report", "reports", "all reports", "view reports"],
+    path: "/dashboard/report",
+    reply: "Opening the reports section for you.",
   },
   {
     keywords: ["onboarding", "start onboarding", "get started", "begin setup"],
@@ -49,13 +50,14 @@ export default function ChatBot() {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const router = useRouter();
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   const simulateAIResponse = (reply: string) => {
     setIsTyping(true);
     setTimeout(() => {
       setMessages((prev) => [...prev, `🤖 AI: ${reply}`]);
       setIsTyping(false);
-    }, 1500); // Simulated delay for typing
+    }, 1300); // Simulated delay for typing
   };
 
   const handleSend = () => {
@@ -87,13 +89,16 @@ export default function ChatBot() {
   };
 
   const quickReplies = [
-    { label: "Go to Dashboard", action: "/dashboard" },
-    { label: "Show all desks", action: "/dashboard/all-desk" },
-    { label: "Log in", action: "/auth/login" },
+    { label: "Home", action: "/" },
+    { label: "Dashboard", action: "/dashboard" },
+    { label: "All Reports", action: "/dashboard/report" },
+    { label: "Heat Map", action: "/dashboard/report/heatmap" },
     { label: "Start onboarding", action: "/onboarding" },
     { label: "Annotate image", action: "/onboarding/annotate-image" },
-    { label: "home", action: "/" },
   ];
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, isTyping]);
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
@@ -127,6 +132,7 @@ export default function ChatBot() {
                 🤖 AI is typing...
               </div>
             )}
+            <div ref={messagesEndRef} />
           </div>
 
           <div className="flex gap-2">
@@ -165,10 +171,15 @@ export default function ChatBot() {
           </div>
         </div>
       ) : (
-        <button onClick={() => setIsOpen(true)} className=" cursor-pointer shadow-lg animate-pulse">
-          <img
-            src="/chat-bot-icon-design-robot-600nw-2476207303.jpg"
+        <button
+          onClick={() => setIsOpen(true)}
+          className=" cursor-pointer shadow-lg animate-pulse"
+        >
+          <Image
+            src="/chat-bot.jpg"
             alt="ChatBot"
+            width={300}
+            height={300}
             className="w-12 h-12 animate-in rounded-full "
           />
         </button>

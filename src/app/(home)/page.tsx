@@ -1,4 +1,4 @@
-import { HeroSectionOne, Navbar } from "@/components/home/Home";
+import { HeroSectionOne } from "@/components/home/Home";
 
 const page = () => {
   return (

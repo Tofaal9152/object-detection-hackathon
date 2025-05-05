@@ -23,6 +23,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const Heatmap = () => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -272,9 +273,11 @@ const Heatmap = () => {
                   onClick={() => setZoomed(!zoomed)}
                 >
                   <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 to-blue-600/5 rounded-lg blur-xl opacity-30"></div>
-                  <img
+                  <Image
                     src={imageUrl || "/placeholder.svg"}
                     alt="Heatmap Visualization"
+                    width={1000}
+                    height={500}
                     className={`rounded-lg shadow-lg border border-neutral-800 transition-all duration-500 ${
                       zoomed ? "scale-150 transform-origin-center" : "scale-100"
                     }`}

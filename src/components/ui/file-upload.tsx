@@ -1,7 +1,7 @@
 import { UploadImageAction } from "@/actions/upload-image/upload-image";
 import { cn } from "@/lib/utils";
 import { IconUpload } from "@tabler/icons-react";
-import { ArrowRightIcon, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { motion } from "motion/react";
 import { useRouter } from "next/navigation";
 import { useActionState, useEffect, useRef, useState } from "react";
@@ -33,7 +33,7 @@ export const FileUpload = ({
 }: {
   onChange?: (files: File[]) => void;
 }) => {
-  const [loading, setLoading] = useState(false);
+  
   const [files, setFiles] = useState<File[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
 

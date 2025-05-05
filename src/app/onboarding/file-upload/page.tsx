@@ -1,19 +1,18 @@
 import FileUploadSection from "@/components/onboarding/FileUpload";
+import BorderGlow from "@/components/ui/BorderGlow";
 
 const page = () => {
   return (
-    <div className="flex items-center justify-center h-full w-full flex-col p-4 bg-gray-50 dark:bg-black gap-3">
-      <div className="flex flex-col items-center justify-center ">
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-white">
-          Onboarding Process
-        </h1>
-        <p className="mt-2 text-gray-600 dark:text-gray-400 ">
-          Step-1 : Upload Image
-        </p>
-      </div>
-      <FileUploadSection />
+    <div className="container mx-auto p-4 dark:backdrop-blur-[3.5px] bg-white dark:bg-transparent rounded-xl border shadow-md z-10 ">
+      <section>
+        <div className=" mx-auto  flex max-w-7xl flex-col items-center justify-center">
+          <BorderGlow />
+        </div>
+        <FileUploadSection />
+      </section>
     </div>
   );
 };
 
 export default page;
+

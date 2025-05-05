@@ -6,7 +6,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import api from "@/lib/api";
-import axios from "axios";
 import { Loader } from "lucide-react";
 import { useEffect, useState } from "react";
 const TimeLine = () => {
@@ -54,7 +53,7 @@ const TimeLine = () => {
           <div className="absolute inset-[-7px] flex justify-between text-xs text-white w-full">
             {!isLoading ? (
               <>
-                {timeline?.map((item, index) => {
+                {timeline?.map((item) => {
                   const hourNum = parseInt(item.time.split(":")[0]);
                   const hour =
                     hourNum === 0 ? 12 : hourNum > 12 ? hourNum - 12 : hourNum;

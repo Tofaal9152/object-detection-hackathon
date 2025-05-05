@@ -39,7 +39,7 @@ const Profile = () => {
   return (
     <Popover>
       <PopoverTrigger>
-        <Aavtar className="w-8 h-8" />
+        <Aavtar className="w-8 h-8 " />
       </PopoverTrigger>
       <PopoverContent>
         {user && <UserButtonPopover user={user} />}

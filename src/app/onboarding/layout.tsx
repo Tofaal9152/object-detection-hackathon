@@ -1,5 +1,5 @@
-import BorderGlow from "@/components/ui/BorderGlow";
-import {IsAuthenticated} from "@/hooks/isAuthenticated";
+import { Navbar } from "@/components/home/Home";
+import { IsAuthenticated } from "@/hooks/isAuthenticated";
 
 export default function DashboardLayout({
   children,
@@ -8,13 +8,11 @@ export default function DashboardLayout({
 }) {
   return (
     <IsAuthenticated>
-      <section className="flex flex-col items-center justify-center h-screen ">
-        <div className="container relative mx-auto p-4  bg-white dark:bg-black/40  border shadow-md z-10 h-full m-4 ">
-          <BorderGlow />
+      <div className="relative mx-auto  flex  flex-col items-center justify-center mb-2">
+        <Navbar />
+      </div>
 
-          {children}
-        </div>
-      </section>
+      {children}
     </IsAuthenticated>
   );
 }
